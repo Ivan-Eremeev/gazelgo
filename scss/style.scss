@@ -26,14 +26,20 @@ $break_xs: 500px;
 // $gutter: $grid-gutter-width; // Переменная для задания отступов равных междуколоночным
 
 // Шрифты
-// @include font-face("EastAP", "../fonts/EastAP/EastAP", bold, italic);
+@include font-face("Roboto", "../fonts/Roboto/RobotoThin/RobotoThin", 200, normal);
+@include font-face("Roboto", "../fonts/Roboto/RobotoLight/RobotoLight", 300, normal);
+@include font-face("Roboto", "../fonts/Roboto/RobotoRegular/RobotoRegular", 400, normal);
+@include font-face("Roboto", "../fonts/Roboto/RobotoMedium/RobotoMedium", 500, normal);
+@include font-face("Roboto", "../fonts/Roboto/RobotoBold/RobotoBold", 700, normal);
 
 // Цвета
-// $black: #000;
+$blue: #2F32D4;
+$green: #31B12A;
+$gray: #5F5F5F;
 
 // Блоки стилей
 @import 'template';
-@import 'blocks/menu';
+// @import 'blocks/menu';
 // @import 'blocks/mmenu';
-// @import 'blocks/modal';
+@import 'blocks/modal';
 // @import 'blocks/tooltipster-noir';

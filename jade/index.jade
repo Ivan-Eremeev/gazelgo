@@ -1,0 +1,94 @@
+extends blocks/base.jade
+
+block title 
+	title Главная
+
+block content
+
+	include blocks/header.jade
+	
+	section.firstScreen
+		.wrapper
+			h1.firstScreen_title Заказ газели в Перми
+			h2.firstScreen_subtitle Доставка, переезд, грузчики
+
+	section.present
+		.wrapper
+			h2.present_title К Вашим услугам
+			.present_row
+				.present_col
+					.present_card
+						h3.present_subtitle Газель "фермер"
+						.present_img
+							img(src="img/car.jpg", alt="car")
+						.present_content
+							p.present_text Размеры кузова:
+							ul.present_list
+								li.present_item Длина 
+									span 4 
+									|метра
+								li.present_item Ширина 
+									span 2 
+									|метра
+								li.present_item Высота 
+									span 2 
+									|метра
+								li.present_item Общий объем 
+									span 16 
+									|кубов
+								li.present_item Мест в кабине 
+									span 5
+				.present_col
+					.present_card
+						h3.present_subtitle Грузчики
+						.present_img
+							img(src="img/loaders.jpg", alt="loaders.jpg")
+						.present_content
+							ul.present_list
+								li.present_item Трезвые, опытные грузчики
+								li.present_item Сохранят вашу мебель и нервы
+
+	section.contacts
+		.wrapper
+				.contacts_block
+					form.contacts_callback
+						h2.contacts_title Заказать обратный звонок
+						.contacts_text Оставьте свой номер телефона и мы Вам перезвоним
+						a(href="#").contacts_btn.modal-trigger(data-modal="#modal-1") Заказать
+
+	section.price
+		.wrapper
+			h2.price_title Цены на наши услуги
+			.price_subtitle Газель:
+			p.price_text Час 400р. Минимум 2 часа.
+			p.price_text Отдаленные районы (Орджоникидзевский, Кировский, Ляды, Вышка1и2,) минимум 3 часа.
+			p.price_text Область и межгород (свыше 100км) 15р/км. Меньше 100км обговаривается индивидуально.
+			.price_subtitle Грузчики:
+			p.price_text Час 250р за 1 человека. Минимум 2 часа.
+			.price_ps 
+				p *Грузчики без газели не предоставляются.
+
+	section.contacts
+		.wrapper
+			.row
+				.contacts_block
+					form(action="send.php" method="post").contacts_form.form
+						h2.contacts_title Написать сообщение
+						.contacts_text Опишите что откуда и куда необходимо перевезти и получите расчет стоимости доставки.
+						input#contacts_name.contacts_input(type="text", name="name" placeholder="Имя" required)
+						input#contacts_tel.contacts_input(type="text", name="tel" placeholder="Телефон" required)
+						textarea#contacts_message.contacts_textarea(name="message" placeholder="Сообщение" required)
+						#rezult
+						button#contacts_btn.contacts_btn(type="submit") Отправить
+
+	.modal#modal-1
+		.modal_body
+			.modal_content
+				form(action="send.php" method="post").modal_form.form
+					input#modal_name.modal_input(type="text", name="name" placeholder="Имя" required)
+					input#modal_tel.modal_input(type="text", name="tel" placeholder="Телефон" required)
+					#rezult
+					button#modal_btn.modal_btn(type="submit") Отправить
+				.modal_close
+
+	include blocks/footer.jade

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <!-- header-->
+    <header class="header" id="header">
+      <div class="wrapper">
+        <div class="header_container"><a class="logo" href="index.html"><img src="img/logo.png" alt="logo"></a>
+          <div class="call">
+            <p class="call_text">Наш телефон<img class="call_img" src="img/phone.svg" alt="phone"></p><a class="call_link" href="tel:+79082481460">8 (908) 248-14-60</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- /header-->
+    <section class="firstScreen">
+      <div class="wrapper">
+        <h1 class="firstScreen_title">Заказ газели в Перми</h1>
+        <h2 class="firstScreen_subtitle">Доставка, переезд, грузчики</h2>
+      </div>
+    </section>
+    <section class="present">
+      <div class="wrapper">
+        <h2 class="present_title">К Вашим услугам</h2>
+        <div class="present_row">
+          <div class="present_col">
+            <div class="present_card">
+              <h3 class="present_subtitle">Газель "фермер"</h3>
+              <div class="present_img"><img src="img/car.jpg" alt="car"></div>
+              <div class="present_content">
+                <p class="present_text">Размеры кузова:</p>
+                <ul class="present_list">
+                  <li class="present_item">Длина <span>4 </span>метра</li>
+                  <li class="present_item">Ширина <span>2 </span>метра</li>
+                  <li class="present_item">Высота <span>2 </span>метра</li>
+                  <li class="present_item">Общий объем <span>16 </span>кубов</li>
+                  <li class="present_item">Мест в кабине <span>5</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="present_col">
+            <div class="present_card">
+              <h3 class="present_subtitle">Грузчики</h3>
+              <div class="present_img"><img src="img/loaders.jpg" alt="loaders.jpg"></div>
+              <div class="present_content">
+                <ul class="present_list">
+                  <li class="present_item">Трезвые, опытные грузчики</li>
+                  <li class="present_item">Сохранят вашу мебель и нервы</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="contacts">
+      <div class="wrapper">
+        <div class="contacts_block">
+          <form class="contacts_callback">
+            <h2 class="contacts_title">Заказать обратный звонок</h2>
+            <div class="contacts_text">Оставьте свой номер телефона и мы Вам перезвоним</div><a class="contacts_btn modal-trigger" href="#" data-modal="#modal-1">Заказать</a>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section class="price">
+      <div class="wrapper">
+        <h2 class="price_title">Цены на наши услуги</h2>
+        <div class="price_subtitle">Газель:</div>
+        <p class="price_text">Час 400р. Минимум 2 часа.</p>
+        <p class="price_text">Отдаленные районы (Орджоникидзевский, Кировский, Ляды, Вышка1и2,) минимум 3 часа.</p>
+        <p class="price_text">Область и межгород (свыше 100км) 15р/км. Меньше 100км обговаривается индивидуально.</p>
+        <div class="price_subtitle">Грузчики:</div>
+        <p class="price_text">Час 250р за 1 человека. Минимум 2 часа.</p>
+        <div class="price_ps"> 
+          <p>*Грузчики без газели не предоставляются.</p>
+        </div>
+      </div>
+    </section>
+    <section class="contacts">
+      <div class="wrapper">
+        <div class="row">
+          <div class="contacts_block">
+            <form class="contacts_form form" action="send.php" method="post">
+              <h2 class="contacts_title">Написать сообщение</h2>
+              <div class="contacts_text">Опишите что откуда и куда необходимо перевезти и получите расчет стоимости доставки.</div>
+              <input class="contacts_input" id="contacts_name" type="text" name="name" placeholder="Имя" required>
+              <input class="contacts_input" id="contacts_tel" type="text" name="tel" placeholder="Телефон" required>
+              <textarea class="contacts_textarea" id="contacts_message" name="message" placeholder="Сообщение" required></textarea>
+              <div id="rezult"></div>
+              <button class="contacts_btn" id="contacts_btn" type="submit">Отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="modal" id="modal-1">
+      <div class="modal_body">
+        <div class="modal_content">
+          <form class="modal_form form" action="send.php" method="post">
+            <input class="modal_input" id="modal_name" type="text" name="name" placeholder="Имя" required>
+            <input class="modal_input" id="modal_tel" type="text" name="tel" placeholder="Телефон" required>
+            <div id="rezult"></div>
+            <button class="modal_btn" id="modal_btn" type="submit">Отправить</button>
+          </form>
+          <div class="modal_close"></div>
+        </div>
+      </div>
+    </div>
+    <!-- footer-->
+    <footer class="footer"> 
+      <div class="wrapper">
+        <div class="license">ИНН 590699496395</div>
+        <div class="license">ОГРНИП 320595800005445</div>
+      </div>
+    </footer>
+    <!-- /footer-->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

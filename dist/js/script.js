@@ -17,7 +17,7 @@
 // libs-settings/tooltipster-settings.js
 // libs-settings/yandex-map-settings.js
 // libs-settings/google-map-settings.js
-// mailto-ajax.js
+// @prepros-append mailto-ajax.js
 
 $(document).ready(function () {
 
@@ -33,6 +33,8 @@ $(document).ready(function () {
 	$('a[href="#"]').click(function(e) {
 		e.preventDefault();
 	});
+
+	formSubmit();
 
 	// Мобильное меню
 	// myMenu($('#menu'));
@@ -64,7 +66,7 @@ $(document).ready(function () {
 	// Модальное окно
 	// Задать кнопке, по которой открывается окно класс ".modal-trigger" и атрибут "data-modal", с id окна.
 	// Пример <button>(class="modal-trigger" data-modal="#modal-1")</button>
-	// modal();
+	modal();
 
 	// Открыть модальное окно
 	// modalShow($('#modal-1'));
@@ -136,23 +138,23 @@ $(document).ready(function () {
 	// parallaxMove($('.parallax-move'));
 
 	// Отслеживание скролла окна браузера
-	$(window).scroll(function() {
-		// countNumber($(".count-number")); // Анимация увеличния значения числа
-	});
+	// $(window).scroll(function() {
+	// 	// countNumber($(".count-number")); // Анимация увеличния значения числа
+	// });
 
 	// Отслеживание изменения ширины окна браузера
-	var heightResized = false;
-	$(window).resize(function() {
-		var windowWidth = $(window).width();
-		if (heightResized == windowWidth) {
-			return;
-		}
-		heightResized = windowWidth;
-		// fontResize(); // Резиновый сайт
-		// screenHeight(); // Блок с высотой окна браузера
-		// tooltipDisable(); // Отключение всплывающей подсказки
-		// sliderReinstall(); // Реинициализация слайдеров
-	});
+	// var heightResized = false;
+	// $(window).resize(function() {
+	// 	var windowWidth = $(window).width();
+	// 	if (heightResized == windowWidth) {
+	// 		return;
+	// 	}
+	// 	heightResized = windowWidth;
+	// 	// fontResize(); // Резиновый сайт
+	// 	// screenHeight(); // Блок с высотой окна браузера
+	// 	// tooltipDisable(); // Отключение всплывающей подсказки
+	// 	// sliderReinstall(); // Реинициализация слайдеров
+	// });
 	
 });
 
@@ -297,41 +299,41 @@ $(document).ready(function () {
 // };
 
 // // Модальное окно
-// function modal(modal) {
-// 	$('.modal-trigger').on('click', function() {
-// 		var $this = $(this),
-// 				data = $this.data('modal'),
-// 				thisModal = $(data);
-// 		modalShow(thisModal);
-// 	});
-// };
-// // Открытие модального окна
-// function modalShow(thisModal) {
-// 	var html = $('html'),
-// 			modalClose = thisModal.find($('.modal_close')),
-// 			documentWidth = parseInt(document.documentElement.clientWidth),
-// 			windowsWidth = parseInt(window.innerWidth),
-// 			scrollbarWidth = windowsWidth - documentWidth;
-// 	thisModal.show(0, function() {
-// 		setTimeout(thisModal.addClass('open'),500);
-// 	});
-// 	html.addClass('lock').css('padding-right',scrollbarWidth);
-// 	modalClose.on('click', function() {
-// 		modalHide(thisModal);
-// 	});
-// 	thisModal.on('click', function(e) {
-// 		if (thisModal.has(e.target).length === 0) {
-// 			modalHide(thisModal);
-// 		}
-// 	});
-// };
-// // Закрытие модального окна
-// function modalHide(thisModal) {
-// 	var html = $('html');
-// 	thisModal.removeClass('open');
-// 	thisModal.hide();
-// 	html.removeClass('lock').css('padding-right',0);
-// };
+function modal(modal) {
+	$('.modal-trigger').on('click', function() {
+		var $this = $(this),
+				data = $this.data('modal'),
+				thisModal = $(data);
+		modalShow(thisModal);
+	});
+};
+// Открытие модального окна
+function modalShow(thisModal) {
+	var html = $('html'),
+			modalClose = thisModal.find($('.modal_close')),
+			documentWidth = parseInt(document.documentElement.clientWidth),
+			windowsWidth = parseInt(window.innerWidth),
+			scrollbarWidth = windowsWidth - documentWidth;
+	thisModal.show(0, function() {
+		setTimeout(thisModal.addClass('open'),500);
+	});
+	html.addClass('lock').css('padding-right',scrollbarWidth);
+	modalClose.on('click', function() {
+		modalHide(thisModal);
+	});
+	thisModal.on('click', function(e) {
+		if (thisModal.has(e.target).length === 0) {
+			modalHide(thisModal);
+		}
+	});
+};
+// Закрытие модального окна
+function modalHide(thisModal) {
+	var html = $('html');
+	thisModal.removeClass('open');
+	thisModal.hide();
+	html.removeClass('lock').css('padding-right',0);
+};
 
 // Текст печатная машинка
 // function textPrint(block) {
@@ -588,21 +590,110 @@ $(document).ready(function () {
 // };
 
 // Вставляет svg в html, позволяет управлять цветом через css 
-// $('.js-img-svg img').each(function(){
-//   var $img = $(this);
-//   var imgClass = $img.attr('class');
-//   var imgURL = $img.attr('src');
-//   $.get(imgURL, function(data) {
-//     var $svg = $(data).find('svg');
-//     if(typeof imgClass !== 'undefined') {
-//       $svg = $svg.attr('class', imgClass+' replaced-svg');
-//     }
-//     $svg = $svg.removeAttr('xmlns:a');
-//     if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
-//       $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
-//     }
-//     $img.replaceWith($svg);
-//   }, 'xml');
-// });
+$('img[src$=".svg"]').each(function(){
+  var $img = $(this);
+  var imgClass = $img.attr('class');
+  var imgURL = $img.attr('src');
+  $.get(imgURL, function(data) {
+    var $svg = $(data).find('svg');
+    if(typeof imgClass !== 'undefined') {
+      $svg = $svg.attr('class', imgClass+' replaced-svg');
+    }
+    $svg = $svg.removeAttr('xmlns:a');
+    if(!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
+      $svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'))
+    }
+    $img.replaceWith($svg);
+  }, 'xml');
+});
+// Простая проверка форм на заполненность и отправка аяксом
+function formSubmit() {
+  $("[type=submit]").on('click', function (e){ 
+    e.preventDefault();
+    // Заводим переменные
+    // Ищем родительскую фору для того чтобы манипулировать элементами находящимися только внутри неё
+    var form = $(this).closest('.form');
+    // Запоминаем путь к php обработчику формы
+    var url = form.attr('action');
+    // Собираем все данные с полей формы для отправки
+    var form_data = form.serialize();
+    // Выбираем все обязательные поля по атрибуту required
+    var field = form.find('[required]');
 
-//# sourceMappingURL=script.js.map
+    // Задаем количество пустых полей по умолчанию
+    empty = 0;
+
+    // Перебираем каждое обязательное поле
+    field.each(function() {
+      // Если поля пустые
+      if ($(this).val() == "") {
+        // Убираем класс valid
+        $(this).removeClass('valid');
+        // Добавляем класс invalid
+        $(this).addClass('invalid');
+        // Увеличиваем счеткик пустых полей
+        empty++;
+      // Если поля не пустые
+      } else {
+        // Убираем класс invalid
+        $(this).removeClass('invalid');
+        // Добавляем класс valid если необходимо для стилизации
+        $(this).addClass('valid');
+      }  
+    });
+
+    // Можно проверить пересчет пустых полей в консоли
+    // console.log(empty);
+
+    // Если пустых полей больше 0
+    if (empty > 0) {
+      // Останавливаем работу скрипта запрещая отправку формы
+      return false;
+    // Если пустых полей нет
+    } else {        
+      // Запускаем отправку формы без перезагрузки страницы
+      $.ajax({
+        // Используем переменные в параметрах для отправки формы
+        url: url,
+        type: "POST",
+        dataType: "html",
+        data: form_data,
+        // При успешной отправке
+        // В аргумент response(произвольное название) можно записать и видеть результат ответа сервера
+        success: function (response) {
+          console.log(response);
+          // Дальше несколько вариантов
+          // Открываем окно с сообщением
+          // modalShow($('#success'));
+          // Открываем какую то страницу. как правило так называемую "страницу спасибо"
+          document.location.href = "success.html";
+        },
+        // При ошибке отправки
+        error: function (response) {
+          console.log(response);
+          // Тоже что нибудь делаем
+          // modalShow($('#error'));
+          // Выводим в заготовленный блок какое то сообщение
+          $('#rezult').text('Проверте корректность заполнения полей формы.');
+        }
+      });
+    }
+  });
+  // Убираем класс invalid при снятии фокуса если поле не пустое
+  $('[required]').on('blur', function() {
+    if ($(this).val() != '') {
+      $(this).removeClass('invalid');
+    }
+  });
+  // Если есть чекбокс с политикой можно отключать кнопку при снятом чекбоксе добавляя к кнопке атрибут disabled 
+  $('.form__privacy input').on('change', function(event) {
+    event.preventDefault();
+    var btn = $(this).closest('.form').find('.btn');
+    if ($(this).prop('checked')) {
+      btn.removeAttr('disabled');
+      // console.log('checked');
+    } else {
+      btn.attr('disabled', true);
+    }
+  });
+};
